@@ -1,0 +1,19 @@
+div {
+  width: 100px;
+  height: 100px;
+  margin: 10px;
+  display: inline-block;
+}
+
+
+.square1 {
+  background-color: red; 
+}
+
+.square2 {
+  background-color: red; 
+}
+
+.square3 {
+  background-color: red;
+}

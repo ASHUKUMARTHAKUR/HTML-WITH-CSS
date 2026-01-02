@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Responsive Grid 2026</title>
+    <style>
+        :root {
+            --gap: 1.5rem;
+            --min-column-width: 280px;
+        }
+
+        body {
+            font-family: system-ui, sans-serif;
+            padding: 2rem;
+            background-color: #f4f4f9;
+        }
+
+
+        .responsive-grid {
+            display: grid;
+          
+            grid-template-columns: repeat(auto-fit, minmax(var(--min-column-width), 1fr));
+            gap: var(--gap);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .grid-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid #e1e1e1;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="responsive-grid">
+        <div class="grid-item"><h3>Item 1</h3><p>Adapts automatically.</p></div>
+        <div class="grid-item"><h3>Item 2</h3><p>No media queries needed.</p></div>
+        <div class="grid-item"><h3>Item 3</h3><p>Flexible 2026 layout.</p></div>
+        <div class="grid-item"><h3>Item 4</h3><p>Works on all devices.</p></div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+.grid-container {
+    display: grid;
+    
+    grid-template-columns: repeat(3, 1fr); 
+ 
+    grid-template-rows: repeat(3, 100px); 
+    
+ 
+    gap: 10px; 
+    
+    background-color: #f1f1f1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    max-width: 400px; 
+    margin: 20px auto; 
+}
+
+.grid-item {
+    background-color: dodgerblue;
+    border: 1px solid black;
+    padding: 10px;
+    font-size: 20px;
+    text-align: center;
+    color: white;
+   
+    
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+}

@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Hierarchy Diagram</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a3a52 0%, #2d4f6f 50%, #1f3f57 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: white;
+            padding: 40px 20px;
+        }
+
+        .main-container {
+            display: flex;
+            gap: 100px;
+            align-items: center;
+            max-width: 1400px;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Diagram Container */
+        .diagram-container {
+            position: relative;
+            width: 500px;
+            height: 500px;
+        }
+
+        svg {
+            width: 100%;
+            height: 100%;
+            filter: drop-shadow(0 0 30px rgba(74, 180, 189, 0.2));
+        }
+
+        circle {
+            fill: none;
+            stroke-width: 2.5;
+            transition: all 0.3s ease;
+        }
+
+        circle.ai {
+            stroke: #4ab4bd;
+            opacity: 0.8;
+        }
+
+        circle.ml {
+            stroke: #5ac5cb;
+            opacity: 0.7;
+        }
+
+        circle.nn {
+            stroke: #6ad6d9;
+            opacity: 0.6;
+        }
+
+        circle.dl {
+            stroke: #7ae7e7;
+            opacity: 0.5;
+        }
+
+        svg:hover circle {
+            opacity: 1;
+            stroke-width: 3;
+        }
+
+        .circle-label {
+            position: absolute;
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: white;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .label-ai {
+            top: 90px;
+            left: 140px;
+            font-size: 1.3rem;
+        }
+
+        .label-ml {
+            top: 165px;
+            left: 165px;
+            font-size: 1.2rem;
+        }
+
+        .label-nn {
+            top: 215px;
+            left: 170px;
+            font-size: 1rem;
+        }
+
+        .label-dl {
+            top: 260px;
+            left: 180px;
+            font-size: 0.95rem;
+        }
+
+        /* Descriptions Container */
+        .descriptions-container {
+            display: flex;
+            flex-direction: column;
+            gap: 50px;
+            max-width: 400px;
+        }
+
+        .description {
+            opacity: 0;
+            animation: slideInRight 0.6s ease-out forwards;
+            padding: 20px;
+            border-left: 4px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .description:nth-child(1) {
+            animation-delay: 0.2s;
+            border-left-color: #4ab4bd;
+        }
+
+        .description:nth-child(2) {
+            animation-delay: 0.3s;
+            border-left-color: #5ac5cb;
+        }
+
+        .description:nth-child(3) {
+            animation-delay: 0.4s;
+            border-left-color: #6ad6d9;
+        }
+
+        .description:nth-child(4) {
+            animation-delay: 0.5s;
+            border-left-color: #7ae7e7;
+        }
+
+        .description:hover {
+            background: rgba(74, 180, 189, 0.1);
+            border-radius: 8px;
+            transform: translateX(10px);
+        }
+
+        .desc-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #7ae7e7;
+        }
+
+        .description:nth-child(1) .desc-title { color: #4ab4bd; }
+        .description:nth-child(2) .desc-title { color: #5ac5cb; }
+        .description:nth-child(3) .desc-title { color: #6ad6d9; }
+        .description:nth-child(4) .desc-title { color: #7ae7e7; }
+
+        .desc-text {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
+        }
+
+        /* Title */
+        .page-title {
+            position: absolute;
+            top: 30px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #4ab4bd, #7ae7e7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: slideInDown 0.8s ease-out;
+        }
+
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .main-container {
+                flex-direction: column;
+                gap: 60px;
+            }
+
+            .diagram-container {
+                width: 400px;
+                height: 400px;
+            }
+
+            .descriptions-container {
+                max-width: 500px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 20px;
+            }
+
+            .page-title {
+                font-size: 2rem;
+                top: 10px;
+            }
+
+            .main-container {
+                gap: 40px;
+            }
+
+            .diagram-container {
+                width: 300px;
+                height: 300px;
+            }
+
+            .descriptions-container {
+                gap: 30px;
+            }
+
+            .description {
+                padding: 15px;
+            }
+
+            .desc-title {
+                font-size: 1rem;
+            }
+
+            .desc-text {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="page-title">AI Hierarchy</div>
+
+<div class="main-container">
+    <div class="diagram-container">
+        <svg viewBox="0 0 500 500">
+            <!-- Circles -->
+            <circle class="ai" cx="250" cy="250" r="180"/>
+            <circle class="ml" cx="250" cy="250" r="135"/>
+            <circle class="nn" cx="250" cy="250" r="90"/>
+            <circle class="dl" cx="250" cy="250" r="45"/>
+
+            <!-- Arrows/Connectors -->
+            <line x1="430" y1="170" x2="480" y2="170" stroke="#4ab4bd" stroke-width="2" stroke-dasharray="5,5" opacity="0.6"/>
+            <polygon points="480,170 475,167 475,173" fill="#4ab4bd" opacity="0.6"/>
+
+            <line x1="420" y1="250" x2="480" y2="250" stroke="#5ac5cb" stroke-width="2" stroke-dasharray="5,5" opacity="0.6"/>
+            <polygon points="480,250 475,247 475,253" fill="#5ac5cb" opacity="0.6"/>
+
+            <line x1="395" y1="330" x2="480" y2="330" stroke="#6ad6d9" stroke-width="2" stroke-dasharray="5,5" opacity="0.6"/>
+            <polygon points="480,330 475,327 475,333" fill="#6ad6d9" opacity="0.6"/>
+
+            <line x1="370" y1="410" x2="480" y2="410" stroke="#7ae7e7" stroke-width="2" stroke-dasharray="5,5" opacity="0.6"/>
+            <polygon points="480,410 475,407 475,413" fill="#7ae7e7" opacity="0.6"/>
+        </svg>
+
+        <div class="circle-label label-ai">Artificial Intelligence</div>
+        <div class="circle-label label-ml">Machine Learning</div>
+        <div class="circle-label label-nn">Neural Networks</div>
+        <div class="circle-label label-dl">Deep Learning</div>
+    </div>
+
+    <div class="descriptions-container">
+        <div class="description">
+            <div class="desc-title">Artificial Intelligence</div>
+            <div class="desc-text">Creating intelligent machines mimicking human intelligence. The broadest field encompassing all intelligent systems and automation.</div>
+        </div>
+
+        <div class="description">
+            <div class="desc-title">Machine Learning</div>
+            <div class="desc-text">Algorithms enabling computers to learn from data. A subset of AI focused on systems that improve through experience.</div>
+        </div>
+
+        <div class="description">
+            <div class="desc-title">Neural Networks</div>
+            <div class="desc-text">Computational models with interconnected artificial neurons. Inspired by biological neurons, connected in layers to process information.</div>
+        </div>
+
+        <div class="description">
+            <div class="desc-title">Deep Learning</div>
+            <div class="desc-text">Neural networks with multiple layers for hierarchical representation learning. The most advanced form with exceptional performance capabilities.</div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

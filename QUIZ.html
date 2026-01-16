@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive GK Quiz 2026</title>
+    <style>
+        :root {
+            --primary: #4A90E2;
+            --bg: #f4f7f6;
+            --text: #333;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg);
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .quiz-container {
+            background: white;
+            width: 100%;
+            max-width: 600px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            padding: 30px;
+        }
+
+        h1 { text-align: center; color: var(--primary); }
+
+        .question {
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .question p {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+
+        .options {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+        }
+
+     
+        @media (min-width: 480px) {
+            .options { grid-template-columns: 1fr 1fr; }
+        }
+
+        label {
+            background: #fff;
+            border: 2px solid #ddd;
+            padding: 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+        }
+
+        label:hover { border-color: var(--primary); background: #f0f7ff; }
+
+        input[type="radio"] { margin-right: 10px; }
+
+        .submit-btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        #result {
+            margin-top: 20px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: #2c3e50;
+        }
+    </style>
+</head>
+<body>
+
+<div class="quiz-container">
+    <h1>🌍 GK Quiz 2026</h1>
+    <form id="quizForm">
+       
+        <div class="question">
+            <p>1. Which country is hosting the 2026 FIFA World Cup?</p>
+            <div class="options">
+                <label><input type="radio" name="q1" value="a"> Qatar</label>
+                <label><input type="radio" name="q1" value="b"> USA, Canada, Mexico</label>
+                <label><input type="radio" name="q1" value="c"> France</label>
+                <label><input type="radio" name="q1" value="d"> Australia</label>
+            </div>
+        </div>
+
+       
+        <div class="question">
+            <p>2. What is the largest planet in our Solar System?</p>
+            <div class="options">
+                <label><input type="radio" name="q2" value="a"> Earth</label>
+                <label><input type="radio" name="q2" value="b"> Mars</label>
+                <label><input type="radio" name="q2" value="c"> Jupiter</label>
+                <label><input type="radio" name="q2" value="d"> Saturn</label>
+            </div>
+        </div>
+
+        <button type="button" class="submit-btn" onclick="calculateScore()">Submit Quiz</button>
+    </form>
+    <div id="result"></div>
+</div>
+
+<script>
+    function calculateScore() {
+        const answers = { q1: 'b', q2: 'c' };
+        let score = 0;
+        const form = document.getElementById('quizForm');
+        const formData = new FormData(form);
+
+        for (let [key, value] of formData.entries()) {
+            if (value === answers[key]) score++;
+        }
+
+        document.getElementById('result').innerHTML = 
+            `You scored ${score} out of ${Object.keys(answers).length}!`;
+    }
+</script>
+
+</body>
+</html>

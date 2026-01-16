@@ -1,43 +1,70 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f4f7f6;
-    padding: 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 40px 20px;
+    min-height: 100vh;
 }
 
 .timetable-container {
     overflow-x: auto;
+    max-width: 900px;
+    margin: 0 auto;
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
     background: #fff;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    overflow: hidden;
 }
 
-th, td {
-    border: 1px solid #ddd;
-    padding: 15px;
+caption {
+    font-size: 28px;
+    font-weight: bold;
+    color: #fff;
+    padding: 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     text-align: center;
 }
 
-th {
-    background-color: #4CAF50;
-    color: white;
+th, td {
+    border: none;
+    padding: 18px 15px;
+    text-align: center;
+    font-size: 15px;
 }
 
-tr:nth-child(even) {
-    background-color: #f2f2f2;
+th {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+tbody tr {
+    transition: all 0.3s ease;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+tbody tr:hover {
+    background-color: #f0f4ff;
+    box-shadow: inset 0 0 10px rgba(102, 126, 234, 0.1);
+    transform: scale(1.02);
 }
 
 .time-slot {
     font-weight: bold;
-    background-color: #e9ecef;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    color: #333;
 }
 
 .break {
-    background-color: #ffeb3b;
+    background: linear-gradient(135deg, #ffd89b 0%, #ffa751 100%);
     font-style: italic;
     font-weight: bold;
+    color: #fff;
 }

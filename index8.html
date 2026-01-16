@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Search 2026</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --primary: #667eea;
+            --secondary: #764ba2;
+            --accent: #f093fb;
+            --text: #1f2937;
+            --light: #f9fafb;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #4facfe 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Animated background orbs */
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.1;
+            filter: blur(40px);
+        }
+
+        .orb-1 {
+            width: 300px;
+            height: 300px;
+            background: #fff;
+            top: -50px;
+            right: -50px;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .orb-2 {
+            width: 250px;
+            height: 250px;
+            background: #667eea;
+            bottom: -50px;
+            left: -50px;
+            animation: float 15s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-50px); }
+        }
+
+        .search-container {
+            text-align: center;
+            width: 90%;
+            max-width: 700px;
+            position: relative;
+            z-index: 10;
+            animation: slideInDown 0.8s ease-out;
+        }
+
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            color: white;
+            font-size: 3.5rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 8px 32px rgba(0,0,0,0.2);
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .subtitle {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.1rem;
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+        }
+
+        .search-box {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(255, 255, 255, 0.25);
+            padding: 6px;
+            border-radius: 60px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37), 
+                        inset 0 0 32px 0 rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .search-box:focus-within {
+            background: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.4);
+            box-shadow: 0 16px 48px 0 rgba(31, 38, 135, 0.5),
+                        inset 0 0 32px 0 rgba(255, 255, 255, 0.2);
+            transform: translateY(-5px);
+        }
+
+        input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            outline: none;
+            padding: 18px 30px;
+            font-size: 1.15rem;
+            color: white;
+            font-weight: 500;
+        }
+
+        input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+            font-weight: 400;
+        }
+
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            padding: 14px 35px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 700;
+            color: white;
+            transition: all 0.3s ease;
+            margin-right: 6px;
+            font-size: 1rem;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        button:hover {
+            transform: scale(1.08);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+
+        .quick-links {
+            margin-top: 3rem;
+            animation: fadeInUp 0.8s ease-out 0.3s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .links-title {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+        }
+
+        .link-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .link-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1.5px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .link-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .subtitle {
+                font-size: 0.95rem;
+            }
+
+            input {
+                padding: 14px 20px;
+                font-size: 1rem;
+            }
+
+            button {
+                padding: 12px 25px;
+            }
+
+            .search-container {
+                width: 95%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+
+<div class="search-container">
+    <h1>✨ Cosmos Search</h1>
+    <p class="subtitle">Explore the infinite universe of knowledge</p>
+    
+    <form action="https://www.google.com/search" method="GET" class="search-box">
+        <input type="text" name="q" placeholder="What would you like to discover today?" required>
+        <button type="submit">🔍 Search</button>
+    </form>
+
+    <div class="quick-links">
+        <div class="links-title">Popular Searches</div>
+        <div class="link-buttons">
+            <button class="link-btn" onclick="document.querySelector('input').value='AI and Machine Learning'; document.querySelector('form').submit();">AI & ML</button>
+            <button class="link-btn" onclick="document.querySelector('input').value='Web Development'; document.querySelector('form').submit();">Web Dev</button>
+            <button class="link-btn" onclick="document.querySelector('input').value='Space and Astronomy'; document.querySelector('form').submit();">Space</button>
+            <button class="link-btn" onclick="document.querySelector('input').value='Technology Trends'; document.querySelector('form').submit();">Tech</button>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

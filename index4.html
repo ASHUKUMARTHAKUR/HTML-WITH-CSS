@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simple Modern Page</title>
     <style>
-        /* 1. Global Reset & Variables */
+      
         :root {
             --bg: #ffffff;
             --text: #1a1a1a;
-            --accent: #2563eb; /* Modern Blue */
+            --accent: #2563eb; 
             --card-bg: #f8fafc;
         }
 
@@ -21,7 +21,7 @@
             line-height: 1.6;
         }
 
-        /* 2. Bento Grid Layout (Modern 2026 standard) */
+
         .container {
             display: grid;
             gap: 1.5rem;
@@ -30,15 +30,14 @@
             margin: auto;
         }
 
-        /* 3. Responsive Breakpoints */
-        /* For screens wider than 768px (Tablets/Desktops) */
+      
         @media (min-width: 768px) {
             .container {
-                grid-template-columns: 2fr 1fr; /* Split into two columns */
+                grid-template-columns: 2fr 1fr; 
             }
         }
 
-        /* 4. Card Styling */
+     
         .card {
             background: var(--card-bg);
             border: 2px solid #e2e8f0;
@@ -48,7 +47,7 @@
         }
 
         .card:hover {
-            transform: scale(1.02); /* Subtle pop on hover */
+            transform: scale(1.02);
             border-color: var(--accent);
         }
 
@@ -66,14 +65,14 @@
 <body>
 
     <main class="container">
-        <!-- Main Content Area -->
+        
         <section class="card">
             <h1>Simple & Clean</h1>
             <p>This layout uses a <strong>Bento Grid</strong> style. In 2026, websites focus on readability and clear boundaries rather than heavy effects.</p>
             <button class="btn">Get Started</button>
         </section>
 
-        <!-- Sidebar / Secondary Area -->
+   
         <aside class="card">
             <h3>Quick Tip</h3>
             <p>Use <strong>Flexbox</strong> for rows and <strong>CSS Grid</strong> for the whole page layout.</p>

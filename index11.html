@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown Timer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style6.css">
+</head>
+<body>
+    <div class="timer-container">
+        <div class="timer-card">
+            <div class="timer-header">
+                <i class="fas fa-hourglass-start"></i>
+                <h1>Event Countdown</h1>
+            </div>
+            
+            <div class="timer-wrapper">
+                <svg class="progress-ring" width="280" height="280">
+                    <circle class="progress-ring-circle" stroke="url(#gradient)" fill="transparent" r="130" cx="140" cy="140" />
+                </svg>
+                <defs>
+                    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+                    </linearGradient>
+                </defs>
+                <div class="timer-display">
+                    <span id="timer-display" class="timer-number">10</span>
+                    <span class="timer-label">seconds</span>
+                </div>
+            </div>
+            
+            <div class="timer-controls">
+                <button class="btn btn-primary" id="start-btn" onclick="startTimer()"><i class="fas fa-play"></i> Start</button>
+                <button class="btn btn-secondary" id="reset-btn" onclick="resetTimer()"><i class="fas fa-redo"></i> Reset</button>
+            </div>
+            
+            <div class="timer-message" id="timer-message"></div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #111; /* Dark background for visibility */
+}
+
+#reptileCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none; /* Allows clicking through the animation */
+}

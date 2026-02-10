@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Happy Birthday Prince Kumar</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+            font-family: 'Segoe UI', sans-serif;
+            overflow: hidden;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Confetti effect */
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background: #f0f;
+            animation: confetti-fall 3s ease-out forwards;
+            pointer-events: none;
+        }
+
+        @keyframes confetti-fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .card {
+            background: white;
+            padding: 50px 40px;
+            border-radius: 30px;
+            text-align: center;
+            width: 400px;
+            max-width: 90%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: cardEntrance 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+            overflow: hidden;
+            border: 3px solid;
+            border-image: linear-gradient(135deg, #ee7752, #e73c7e, #23a6d5) 1;
+        }
+
+        @keyframes cardEntrance {
+            0% {
+                transform: scale(0.3) rotateX(90deg);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1) rotateX(0deg);
+                opacity: 1;
+            }
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { transform: translate(-100%, -100%) rotate(45deg); }
+            100% { transform: translate(100%, 100%) rotate(45deg); }
+        }
+
+        .emoji-container {
+            font-size: 80px;
+            margin: 20px 0;
+            animation: emojiFloat 3s ease-in-out infinite;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .emoji {
+            animation: emojiPulse 2s ease-in-out infinite;
+        }
+
+        .emoji:nth-child(2) {
+            animation-delay: 0.3s;
+        }
+
+        .emoji:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+
+        @keyframes emojiFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes emojiPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        h1 {
+            color: #e73c7e;
+            font-size: 42px;
+            margin: 20px 0 10px 0;
+            animation: titleGlow 2s ease-in-out infinite alternate;
+            font-weight: 800;
+            letter-spacing: 2px;
+        }
+
+        @keyframes titleGlow {
+            from {
+                text-shadow: 0 0 10px rgba(231, 60, 126, 0.5), 0 0 20px rgba(231, 60, 126, 0.3);
+                color: #e73c7e;
+            }
+            to {
+                text-shadow: 0 0 20px rgba(231, 60, 126, 0.8), 0 0 40px rgba(231, 60, 126, 0.5);
+                color: #ff1493;
+            }
+        }
+
+        h2 {
+            color: #23a6d5;
+            font-size: 36px;
+            margin-bottom: 25px;
+            font-weight: 700;
+            animation: nameReveal 1s ease-out 0.3s both;
+        }
+
+        @keyframes nameReveal {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .message {
+            color: #555;
+            font-size: 16px;
+            line-height: 1.8;
+            margin: 20px 0;
+            animation: messageSlideIn 1s ease-out 0.6s both;
+            font-weight: 500;
+        }
+
+        @keyframes messageSlideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .decoration {
+            font-size: 24px;
+            margin: 15px 0;
+            letter-spacing: 10px;
+            animation: spin 4s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        button {
+            margin-top: 25px;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            background: linear-gradient(135deg, #ee7752, #e73c7e);
+            color: white;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(231, 60, 126, 0.3);
+            position: relative;
+            overflow: hidden;
+            animation: buttonSlideIn 1s ease-out 0.9s both;
+        }
+
+        @keyframes buttonSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(231, 60, 126, 0.5);
+            background: linear-gradient(135deg, #e73c7e, #ee7752);
+        }
+
+        button:active {
+            transform: translateY(-1px);
+        }
+
+        .stars {
+            position: fixed;
+            width: 3px;
+            height: 3px;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="emoji-container">
+            <span class="emoji">🎂</span>
+            <span class="emoji">🎉</span>
+            <span class="emoji">🎊</span>
+        </div>
+        <h1>Happy Birthday</h1>
+        <h2>Prince Kumar</h2>
+        <div class="decoration">✨ ⭐ ✨</div>
+        <p class="message">
+            Wishing you a day filled with happiness,<br>
+            success, and sweet surprises! 🎈✨
+        </p>
+        <p class="message" style="font-size: 14px; color: #999;">
+            May all your dreams come true today! 🌟
+        </p>
+        <button onclick="celebrateBirthday()">🎊 Celebrate! 🎊</button>
+    </div>
+
+    <script>
+        // Create confetti on page load
+        function createConfetti() {
+            const colors = ['#ee7752', '#e73c7e', '#23a6d5', '#23d5ab', '#ffeb3b', '#ff6b9d'];
+            for (let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + '%';
+                confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.animationDelay = Math.random() * 0.5 + 's';
+                confetti.style.animationDuration = (2 + Math.random() * 2) + 's';
+                document.body.appendChild(confetti);
+                setTimeout(() => confetti.remove(), 5000);
+            }
+        }
+
+        // Create twinkling stars
+        function createStars() {
+            for (let i = 0; i < 30; i++) {
+                const star = document.createElement('div');
+                star.className = 'stars';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 3 + 's';
+                document.body.appendChild(star);
+            }
+        }
+
+        function celebrateBirthday() {
+            createConfetti();
+            // Add sound/alert
+            alert('🎉 Happy Birthday Prince Kumar! Wishing you the best year ahead! 🎊');
+        }
+
+        // Initialize on load
+        window.addEventListener('load', createStars);
+    </script>
+
+</body>
+</html>
